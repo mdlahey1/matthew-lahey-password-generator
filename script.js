@@ -35,12 +35,21 @@ function generatePassword() {
     alert("Must enter a valid number between 8 and 128.");
     return null;
   }
-
-  // Want to add a check that ensures the user entered an integer
-
   //Check to make sure the user entered a number between 8 and 128
-  if (pLength < 8 || pLength > 128) {
+  else if (pLength < 8 || pLength > 128) {
     alert("Must enter a number value between 8 and 128");
   }
+  //Prompt the user to confirm which type of characters to include in their random password
+  else {
+    lowerConfirm = confirm("Click 'OK' to confirm including lower case characters or 'Cancel' to not include.");
+    console.log("Lower Case: " + lowerConfirm);
+    upperConfirm = confirm("Click 'OK' to confirm including upper case characters or 'Cancel' to not include.");
+    console.log("Upper Case: " + upperConfirm);
+    numberConfirm = confirm("Click 'OK' to confirm including numbers or 'Cancel' to not include.");
+    console.log("Number: " + numberConfirm);
+    specialConfirm = confirm("Click 'OK' to confirm including special characters or 'Cancel' to not include.");
+    console.log("Special Character: " + specialConfirm);
+  }
+  
 
 }
