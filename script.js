@@ -29,28 +29,30 @@ generateBtn.addEventListener("click", writePassword);
 
 // Function to prompt user to select a password length between 8-128 as well as a combination of lowercase letters, uppercase letters, special characters and numbers
 function generatePassword() {
-  // Ask user how many characters they want their password to be
-  var pLength = prompt("How many characters would you like your random password to be? Please provide an integer between 8 and 128 characters.");
+  // Ask user how many characters they want their password to be and ensure it comes through as datatype number
+  var pLength = parseInt(prompt("How many characters would you like your random password to be? Please provide an integer between 8 and 128 characters."),10);
   console.log("Password Length: " + pLength);
+  // console.log("Type of: " + typeof(pLength));
 
-  // Check to make sure the user entered a value
-  if (!pLength) {
-    alert("Must enter a valid number between 8 and 128.");
-    return null;
-  }
+    // Check to make sure the user entered a number
+  if (Number.isNaN(pLength)) {
+      alert("Must enter a valid number between 8 and 128");
+      return null;
+    }
+
   // Check to make sure the user entered a number between 8 and 128
   else if (pLength < 8 || pLength > 128) {
-    alert("Must enter a number value between 8 and 128");
+    alert("Must enter a number value greater than or equal to 8 and less than or equal to 128");
   }
   // Prompt the user to confirm which type of characters to include in their random password
   else {
-    lowerConfirm = confirm("Click 'OK' to confirm including lower case characters or 'Cancel' to not include.");
+    lowerConfirm = confirm("Click 'OK' to confirm including LOWER CASE characters or 'Cancel' to not include.");
     console.log("Lower Case: " + lowerConfirm);
-    upperConfirm = confirm("Click 'OK' to confirm including upper case characters or 'Cancel' to not include.");
+    upperConfirm = confirm("Click 'OK' to confirm including UPPER CASE characters or 'Cancel' to not include.");
     console.log("Upper Case: " + upperConfirm);
-    numberConfirm = confirm("Click 'OK' to confirm including numbers or 'Cancel' to not include.");
+    numberConfirm = confirm("Click 'OK' to confirm including NUMBERS or 'Cancel' to not include.");
     console.log("Number: " + numberConfirm);
-    specialConfirm = confirm("Click 'OK' to confirm including special characters or 'Cancel' to not include.");
+    specialConfirm = confirm("Click 'OK' to confirm including SPECIAL characters or 'Cancel' to not include.");
     console.log("Special Character: " + specialConfirm);
   }
   
@@ -138,4 +140,19 @@ function generatePassword() {
     userCharacters = specialCharacters;
     console.log(userCharacters);
   }
+
+  // randomly select characters from the users selected type(s) of variables
+  var passwordarray = []
+
+  for (var count = 0; count < pLength; count++) {
+    var selection = userCharacters[Math.floor(Math.random() * userCharacters.length)];
+    passwordarray.push(selection);
+    console.log(selection);
+  }
+
+  // join the password array and return the password variable
+  var password = passwordarray.join("");
+  console.log("Your Pasword is: " + password);
+  return password;
+
 }
