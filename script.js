@@ -152,7 +152,7 @@ function generatePassword() {
     console.log(selection);
   }
 
-  // join the password array and return the password variable
+  // join the passwordarray and return the newpassword variable
   var newpassword = passwordarray.join("");
   console.log("Your Pasword is: " + password);
   return newpassword;
