@@ -45,6 +45,7 @@ function generatePassword() {
   // Check to make sure the user entered a number between 8 and 128
   else if (pLength < 8 || pLength > 128) {
     alert("Must enter a number value greater than or equal to " + lowerlimit + " and less than or equal to " + upperlimit +".");
+    return null;
   }
   // Prompt the user to confirm which type of characters to include in their random password
   else {
