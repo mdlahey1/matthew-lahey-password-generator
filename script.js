@@ -1,5 +1,8 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
+
+//lower/upper limit password length
+var lowerlimit = 8
+var upperlimit = 128
 
 // lowercase letters array
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -16,7 +19,7 @@ var specialCharacters = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?',
 // variable to store the user's choices
 var userCharacters;
 
-// Write password to the #password input
+// Display password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -27,22 +30,21 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Function to prompt user to select a password length between 8-128 as well as a combination of lowercase letters, uppercase letters, special characters and numbers
+// Function to prompt user to select a password length between lowerlimit-upperlimit as well as a combination of lowercase letters, uppercase letters, special characters and numbers
 function generatePassword() {
   // Ask user how many characters they want their password to be and ensure it comes through as datatype number
-  var pLength = parseInt(prompt("How many characters would you like your random password to be? Please provide an integer between 8 and 128 characters."),10);
+  var pLength = parseInt(prompt("How many characters would you like your random password to be? Please provide a password length between " + lowerlimit + " and " + upperlimit + " characters:"),10);
   console.log("Password Length: " + pLength);
-  // console.log("Type of: " + typeof(pLength));
 
-    // Check to make sure the user entered a number
+  // Check to make sure the user entered a number
   if (Number.isNaN(pLength)) {
-      alert("Must enter a valid number between 8 and 128");
+      alert("Must enter a valid number between " + lowerlimit + " and " + upperlimit + ".");
       return null;
     }
 
   // Check to make sure the user entered a number between 8 and 128
   else if (pLength < 8 || pLength > 128) {
-    alert("Must enter a number value greater than or equal to 8 and less than or equal to 128");
+    alert("Must enter a number value greater than or equal to " + lowerlimit + " and less than or equal to " + upperlimit +".");
   }
   // Prompt the user to confirm which type of characters to include in their random password
   else {
@@ -58,7 +60,7 @@ function generatePassword() {
   
   // No options selected
   if (!lowerConfirm && !upperConfirm && !numberConfirm && !specialConfirm) {
-    alert("You must include at least 1 type of character to include in your password");
+    alert("You must select at least 1 type of character to include in your password");
     return null;
   }
   // 4 options selected (all of them)
@@ -151,8 +153,9 @@ function generatePassword() {
   }
 
   // join the password array and return the password variable
-  var password = passwordarray.join("");
+  var newpassword = passwordarray.join("");
   console.log("Your Pasword is: " + password);
-  return password;
+  return newpassword;
 
 }
+
