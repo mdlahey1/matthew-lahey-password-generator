@@ -7,6 +7,13 @@ The final application also contains error handling that provides the user with a
 Through completing this application I was able to better learn how to utilize arrays, JavaScript functions, and user prompts.
 
 ## Screenshot
+<img src="./Assets/Images/Password-Generator.png"
+alt="Text Box with a title Generate Password and a red button stating Generate Password" class="float-left" />
+
+## Link to Deployed Site
+https://mdlahey1.github.io/matthew-lahey-password-generator/
 
 ## Link to GitHub Repository
+https://github.com/mdlahey1/matthew-lahey-password-generator
+
 
